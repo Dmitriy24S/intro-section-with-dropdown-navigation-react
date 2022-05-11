@@ -1,8 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type NavMenuProps = {
   isNavOpen: boolean;
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+// Close dropdown menu when click outside of it
+const useClickOutside = (
+  isDropdownOpen: boolean,
+  closeDropdownMenu: Function
+) => {
+  const domNode = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    // if menu is open
+    if (isDropdownOpen) {
+      console.log("dropdown event");
+      const eventHandler = (event: MouseEvent) => {
+        console.log("click event / inside?");
+        // if click outside of menu - close the menu
+        if (!domNode.current?.contains(event.target as Element)) {
+          closeDropdownMenu();
+          console.log("click outside");
+        }
+      };
+
+      document.addEventListener("mousedown", eventHandler);
+
+      return () => {
+        document.removeEventListener("mousedown", eventHandler);
+      };
+    }
+  }, [isDropdownOpen]);
+
+  return domNode;
 };
 
 const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
@@ -10,6 +41,16 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
     useState<boolean>(false);
   const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] =
     useState<boolean>(false);
+
+  // Refs for dropdown menus
+  const featuresDropdownNodeRef = useClickOutside(
+    isFeaturesDropdownOpen,
+    setIsFeaturesDropdownOpen
+  );
+  const companyDropdownNodeRef = useClickOutside(
+    isCompanyDropdownOpen,
+    setIsCompanyDropdownOpen
+  );
 
   return (
     // Nav container
@@ -45,7 +86,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
         {/* Menu list */}
         <ul className="text-left flex flex-col gap-3 md:flex-row md:mr-auto md:gap-6">
           {/* Dropdown 1 */}
-          <li className="md:relative">
+          <li className="md:relative" ref={featuresDropdownNodeRef}>
             {/* dropdown 1 - toggle */}
             <button
               // ? aria-expanded={isFeaturesDropdownOpen ? "true" : "false"}
@@ -65,7 +106,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             </button>
             {/* dropdown 1 - list */}
             {isFeaturesDropdownOpen && (
-              <ul className="ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:min-w-max md:ml-0 md:right-0 md:rounded-lg">
+              <ul className="dropdown-menu ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:min-w-max md:ml-0 md:right-0 md:rounded-lg">
                 <li>
                   <a href="#/" className="flex items-center gap-3">
                     <span>
@@ -102,7 +143,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             )}
           </li>
           {/* Dropdown 2 */}
-          <li className="md:relative">
+          <li className="md:relative" ref={companyDropdownNodeRef}>
             {/* dropdown 2 - toggle */}
             <button
               // ? aria-expanded={isCompanyDropdownOpen ? "true" : "false"}
@@ -122,7 +163,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             </button>
             {/* dropdown 2 - list */}
             {isCompanyDropdownOpen && (
-              <ul className="ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:ml-0 md:min-w-max md:rounded-lg">
+              <ul className="dropdown-menu ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:ml-0 md:min-w-max md:rounded-lg">
                 <li>
                   <a href="#/" className="flex items-center gap-3">
                     History
@@ -170,7 +211,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
               href="#/"
               className="block rounded-xl border-2 border-zinc-600 w-full py-2 md:px-6 md:py-1.5 hover:bg-black hover:text-white"
             >
-              Regsiter
+              Register
             </a>
           </li>
         </ul>

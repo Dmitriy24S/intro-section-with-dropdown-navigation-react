@@ -1,3 +1,7 @@
+.dropdown-menu span {
+  min-width: 18px;
+}
+
 /* Nav transition */
 .nav-menu {
   transition: ease-in-out 250ms;
