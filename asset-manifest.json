@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/intro-section-with-dropdown-navigation-react/static/css/main.05144d73.css",
+    "main.js": "/intro-section-with-dropdown-navigation-react/static/js/main.76a5af42.js",
+    "static/js/787.4e3f774e.chunk.js": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js",
+    "index.html": "/intro-section-with-dropdown-navigation-react/index.html",
+    "main.05144d73.css.map": "/intro-section-with-dropdown-navigation-react/static/css/main.05144d73.css.map",
+    "main.76a5af42.js.map": "/intro-section-with-dropdown-navigation-react/static/js/main.76a5af42.js.map",
+    "787.4e3f774e.chunk.js.map": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.05144d73.css",
+    "static/js/main.76a5af42.js"
+  ]
+}
