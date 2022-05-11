@@ -89,7 +89,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
           <li className="md:relative" ref={featuresDropdownNodeRef}>
             {/* dropdown 1 - toggle */}
             <button
-              // ? aria-expanded={isFeaturesDropdownOpen ? "true" : "false"}
+              aria-expanded={isFeaturesDropdownOpen ? "true" : "false"}
               className="flex items-center gap-2 w-full py-1"
               onClick={() => setIsFeaturesDropdownOpen((prev) => !prev)}
             >
@@ -146,7 +146,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
           <li className="md:relative" ref={companyDropdownNodeRef}>
             {/* dropdown 2 - toggle */}
             <button
-              // ? aria-expanded={isCompanyDropdownOpen ? "true" : "false"}
+              aria-expanded={isCompanyDropdownOpen ? "true" : "false"}
               className="flex items-center gap-2 w-full py-1 md:relative"
               onClick={() => setIsCompanyDropdownOpen((prev) => !prev)}
             >
