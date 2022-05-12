@@ -1,57 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import NavMenuDropdown from "./NavMenuDropdown";
 
 type NavMenuProps = {
   isNavOpen: boolean;
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-// Close dropdown menu when click outside of it
-const useClickOutside = (
-  isDropdownOpen: boolean,
-  closeDropdownMenu: Function
-) => {
-  const domNode = useRef<HTMLLIElement>(null);
-
-  useEffect(() => {
-    // if menu is open
-    if (isDropdownOpen) {
-      console.log("dropdown event");
-      const eventHandler = (event: MouseEvent) => {
-        console.log("click event / inside?");
-        // if click outside of menu - close the menu
-        if (!domNode.current?.contains(event.target as Element)) {
-          closeDropdownMenu();
-          console.log("click outside");
-        }
-      };
-
-      document.addEventListener("mousedown", eventHandler);
-
-      return () => {
-        document.removeEventListener("mousedown", eventHandler);
-      };
-    }
-  }, [isDropdownOpen]);
-
-  return domNode;
-};
-
 const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
-  const [isFeaturesDropdownOpen, setIsFeaturesDropdownOpen] =
-    useState<boolean>(false);
-  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] =
-    useState<boolean>(false);
-
-  // Refs for dropdown menus
-  const featuresDropdownNodeRef = useClickOutside(
-    isFeaturesDropdownOpen,
-    setIsFeaturesDropdownOpen
-  );
-  const companyDropdownNodeRef = useClickOutside(
-    isCompanyDropdownOpen,
-    setIsCompanyDropdownOpen
-  );
-
   return (
     // Nav container
     <section
@@ -84,105 +39,62 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
         </button>
 
         {/* Menu list */}
-        <ul className="text-left flex flex-col gap-3 md:flex-row md:mr-auto md:gap-6">
+        <ul className="text-left flex flex-col gap-3 md:flex-row md:mr-auto md:gap-6 md:relative">
           {/* Dropdown 1 */}
-          <li className="md:relative" ref={featuresDropdownNodeRef}>
-            {/* dropdown 1 - toggle */}
-            <button
-              aria-expanded={isFeaturesDropdownOpen ? "true" : "false"}
-              className="flex items-center gap-2 w-full py-1"
-              onClick={() => setIsFeaturesDropdownOpen((prev) => !prev)}
-            >
-              Features
-              <span>
-                <img
-                  src="images/icon-arrow-down.svg"
-                  alt=""
-                  className={`nav-chevron transition-transform ${
-                    isFeaturesDropdownOpen ? "transform -rotate-180" : ""
-                  }`}
-                />
-              </span>
-            </button>
-            {/* dropdown 1 - list */}
-            {isFeaturesDropdownOpen && (
-              <ul className="dropdown-menu ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:min-w-max md:ml-0 md:right-0 md:rounded-lg">
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    <span>
-                      <img src="images/icon-todo.svg" alt="" />
-                    </span>
-                    Todo List
-                  </a>
-                </li>
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    <span>
-                      <img src="images/icon-calendar.svg" alt="" />
-                    </span>
-                    Calendar
-                  </a>
-                </li>
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    <span>
-                      <img src="images/icon-reminders.svg" alt="" />
-                    </span>
-                    Reminders
-                  </a>
-                </li>
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    <span>
-                      <img src="images/icon-planning.svg" alt="" />
-                    </span>
-                    Planning
-                  </a>
-                </li>
-              </ul>
-            )}
-          </li>
+          <NavMenuDropdown title={"Features"}>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                <span>
+                  <img src="images/icon-todo.svg" alt="" />
+                </span>
+                Todo List
+              </a>
+            </li>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                <span>
+                  <img src="images/icon-calendar.svg" alt="" />
+                </span>
+                Calendar
+              </a>
+            </li>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                <span>
+                  <img src="images/icon-reminders.svg" alt="" />
+                </span>
+                Reminders
+              </a>
+            </li>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                <span>
+                  <img src="images/icon-planning.svg" alt="" />
+                </span>
+                Planning
+              </a>
+            </li>
+          </NavMenuDropdown>
+
           {/* Dropdown 2 */}
-          <li className="md:relative" ref={companyDropdownNodeRef}>
-            {/* dropdown 2 - toggle */}
-            <button
-              aria-expanded={isCompanyDropdownOpen ? "true" : "false"}
-              className="flex items-center gap-2 w-full py-1 md:relative"
-              onClick={() => setIsCompanyDropdownOpen((prev) => !prev)}
-            >
-              Company
-              <span>
-                <img
-                  src="images/icon-arrow-down.svg"
-                  alt=""
-                  className={`nav-chevron transition-transform ${
-                    isCompanyDropdownOpen ? "transform -rotate-180" : ""
-                  }`}
-                />
-              </span>
-            </button>
-            {/* dropdown 2 - list */}
-            {isCompanyDropdownOpen && (
-              <ul className="dropdown-menu ml-3 flex flex-col gap-4 mt-2 md:absolute md:bg-white md:p-6 md:shadow-2xl md:ml-0 md:min-w-max md:rounded-lg">
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    History
-                  </a>
-                </li>
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    Our Team
-                  </a>
-                </li>
-                <li>
-                  <a href="#/" className="flex items-center gap-3">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            )}
-          </li>
-          {/* Dropdown 2 end */}
+          <NavMenuDropdown title={"Company"}>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                History
+              </a>
+            </li>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                Our Team
+              </a>
+            </li>
+            <li>
+              <a href="#/" className="flex items-center gap-3">
+                Blog
+              </a>
+            </li>
+          </NavMenuDropdown>
+
           <li>
             <a href="#/" className="block w-full py-1 text-left ">
               Careers
