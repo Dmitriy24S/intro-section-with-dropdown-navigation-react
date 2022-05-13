@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
     <header className="max-w-7xl mx-auto p-6 relative">
-      <div className="header-content-container flex items-center justify-between">
+      <div className="header-content-container flex items-center justify-between gap-4">
         {/* Nav logo */}
         <section className="logo-container">
           <img
