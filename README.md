@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Intro section with dropdown navigation menu
+
+![Design preview for Intro section with dropdown navigation menu](./design/desktop-preview.jpg)
+
+## Welcome 
+
+Intro section with dropdown navigation menu. Created with React & Tailwind CSS.
+
+[Live Demo](https://dmitriy24s.github.io/intro-section-with-dropdown-navigation-react/) 👈
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
