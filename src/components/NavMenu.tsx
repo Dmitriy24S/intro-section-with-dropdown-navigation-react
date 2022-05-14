@@ -1,5 +1,6 @@
 import React from "react";
 import NavMenuDropdown from "./NavMenuDropdown";
+import { useState, useEffect } from "react";
 
 type NavMenuProps = {
   isNavOpen: boolean;
@@ -7,6 +8,29 @@ type NavMenuProps = {
 };
 
 const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
+  // Window dimenstions / handle window resize for mobile/desktop nav dropdown animation
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height,
+    };
+  }
+
+  useEffect(() => {
+    console.log(windowDimensions);
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [windowDimensions]);
+
   return (
     // Nav container
     <section
@@ -41,7 +65,10 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
         {/* Menu list */}
         <ul className="text-left flex flex-col gap-3 md:flex-row md:mr-auto md:gap-6 md:relative">
           {/* Dropdown 1 */}
-          <NavMenuDropdown title={"Features"}>
+          <NavMenuDropdown
+            title={"Features"}
+            windowDimensions={windowDimensions}
+          >
             <li>
               <a href="#/" className="flex items-center gap-3">
                 <span>
@@ -77,7 +104,10 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
           </NavMenuDropdown>
 
           {/* Dropdown 2 */}
-          <NavMenuDropdown title={"Company"}>
+          <NavMenuDropdown
+            title={"Company"}
+            windowDimensions={windowDimensions}
+          >
             <li>
               <a href="#/" className="flex items-center gap-3">
                 History
