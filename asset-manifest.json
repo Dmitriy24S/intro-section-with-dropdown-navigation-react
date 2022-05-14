@@ -1,15 +1,19 @@
 {
   "files": {
     "main.css": "/intro-section-with-dropdown-navigation-react/static/css/main.aeca9a5a.css",
-    "main.js": "/intro-section-with-dropdown-navigation-react/static/js/main.a77e2e24.js",
+    "main.js": "/intro-section-with-dropdown-navigation-react/static/js/main.3a73e634.js",
     "static/js/787.4e3f774e.chunk.js": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js",
     "index.html": "/intro-section-with-dropdown-navigation-react/index.html",
+    "static/media/icon-reminders.svg": "/intro-section-with-dropdown-navigation-react/static/media/icon-reminders.d573f5028c4469edf76a0b57065af566.svg",
+    "static/media/icon-planning.svg": "/intro-section-with-dropdown-navigation-react/static/media/icon-planning.7264cc64a81fa348da1d23defa87d2b5.svg",
+    "static/media/icon-calendar.svg": "/intro-section-with-dropdown-navigation-react/static/media/icon-calendar.238c231afbc7d43b81c625ceea0d1b37.svg",
+    "static/media/icon-todo.svg": "/intro-section-with-dropdown-navigation-react/static/media/icon-todo.84eeba8f3b9a1811c1ea3d7420dcfd98.svg",
     "main.aeca9a5a.css.map": "/intro-section-with-dropdown-navigation-react/static/css/main.aeca9a5a.css.map",
-    "main.a77e2e24.js.map": "/intro-section-with-dropdown-navigation-react/static/js/main.a77e2e24.js.map",
+    "main.3a73e634.js.map": "/intro-section-with-dropdown-navigation-react/static/js/main.3a73e634.js.map",
     "787.4e3f774e.chunk.js.map": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aeca9a5a.css",
-    "static/js/main.a77e2e24.js"
+    "static/js/main.3a73e634.js"
   ]
 }
