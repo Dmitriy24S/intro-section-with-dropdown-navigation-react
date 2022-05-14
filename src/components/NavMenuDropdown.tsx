@@ -2,8 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isMobile } from "react-device-detect";
 
-const NavMenuDropdown = (props: any) => {
-  // ! fix props: any ?
+type NavMenuDropdownProps = {
+  children: React.ReactNode;
+  title: string;
+  windowDimensions: {
+    width: number;
+    height: number;
+  };
+};
+const NavMenuDropdown = (props: NavMenuDropdownProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownMenuRef = useRef<HTMLLIElement>(null);
 
