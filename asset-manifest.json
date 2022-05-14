@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/intro-section-with-dropdown-navigation-react/static/css/main.ce18ce03.css",
-    "main.js": "/intro-section-with-dropdown-navigation-react/static/js/main.f6f06df8.js",
+    "main.css": "/intro-section-with-dropdown-navigation-react/static/css/main.aeca9a5a.css",
+    "main.js": "/intro-section-with-dropdown-navigation-react/static/js/main.a77e2e24.js",
     "static/js/787.4e3f774e.chunk.js": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js",
     "index.html": "/intro-section-with-dropdown-navigation-react/index.html",
-    "main.ce18ce03.css.map": "/intro-section-with-dropdown-navigation-react/static/css/main.ce18ce03.css.map",
-    "main.f6f06df8.js.map": "/intro-section-with-dropdown-navigation-react/static/js/main.f6f06df8.js.map",
+    "main.aeca9a5a.css.map": "/intro-section-with-dropdown-navigation-react/static/css/main.aeca9a5a.css.map",
+    "main.a77e2e24.js.map": "/intro-section-with-dropdown-navigation-react/static/js/main.a77e2e24.js.map",
     "787.4e3f774e.chunk.js.map": "/intro-section-with-dropdown-navigation-react/static/js/787.4e3f774e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce18ce03.css",
-    "static/js/main.f6f06df8.js"
+    "static/css/main.aeca9a5a.css",
+    "static/js/main.a77e2e24.js"
   ]
 }
