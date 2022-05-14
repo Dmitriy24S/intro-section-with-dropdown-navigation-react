@@ -1,6 +1,10 @@
 import React from "react";
 import NavMenuDropdown from "./NavMenuDropdown";
 import { useState, useEffect } from "react";
+import { ReactComponent as IconTodo } from "../images/icon-todo.svg";
+import { ReactComponent as IconCalendar } from "../images/icon-calendar.svg";
+import { ReactComponent as IconReminder } from "../images/icon-reminders.svg";
+import { ReactComponent as IconPlanning } from "../images/icon-planning.svg";
 
 type NavMenuProps = {
   isNavOpen: boolean;
@@ -72,7 +76,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             <li>
               <a href="#/" className="flex items-center gap-3">
                 <span>
-                  <img src="images/icon-todo.svg" alt="" />
+                  <IconTodo />
                 </span>
                 Todo List
               </a>
@@ -80,7 +84,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             <li>
               <a href="#/" className="flex items-center gap-3">
                 <span>
-                  <img src="images/icon-calendar.svg" alt="" />
+                  <IconCalendar />
                 </span>
                 Calendar
               </a>
@@ -88,7 +92,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             <li>
               <a href="#/" className="flex items-center gap-3">
                 <span>
-                  <img src="images/icon-reminders.svg" alt="" />
+                  <IconReminder />
                 </span>
                 Reminders
               </a>
@@ -96,7 +100,7 @@ const NavMenu = ({ isNavOpen, setIsNavOpen }: NavMenuProps) => {
             <li>
               <a href="#/" className="flex items-center gap-3">
                 <span>
-                  <img src="images/icon-planning.svg" alt="" />
+                  <IconPlanning />
                 </span>
                 Planning
               </a>
